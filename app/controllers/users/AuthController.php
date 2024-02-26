@@ -1,2 +1,2 @@
 <?php
-namespace App\Users\Controllers;
+namespace App;

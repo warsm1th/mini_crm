@@ -8,11 +8,17 @@ class User
 
     public function __construct()
     {
-        $this->db = Database::getInstance()->getConnection;
+        $this->db = Database::getInstance()->getConnection();
     }
 
-    public function readAll()
+    public function readAll():array
     {
-        
+        $result = $this->db->query('SELECT * FROM users');
+        $users = [];
+        while ($row = $result->fetch(\PDO::FETCH_LAZY))
+        {
+            $users[] = $row;
+        }
+        return $users;
     }
 }

@@ -1,8 +1,5 @@
 <?php
-namespace App\Users\Controllers;
-
-require_once __DIR__ . 'vendor/autoload.php';
-
+namespace App\Controllers\Users;
 use App\Models\User;
 
 class UsersController

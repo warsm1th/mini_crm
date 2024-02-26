@@ -3,7 +3,10 @@
     "description": "a",
     "autoload": {
         "psr-4": {
-            "app\\": "app/"
+            "App\\": "app/",
+            "App\\Config\\": "app/config/",
+            "App\\Models\\": "app/models/",
+            "App\\Controllers\\Users\\": "app/controllers/users/"
         }
     },
     "minimum-stability": "dev",
