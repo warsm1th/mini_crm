@@ -14,7 +14,22 @@ class Router
         {
             case 'users':
                 $controller = new UsersController;
-                $controller->index();
+                if (isset($_GET['action']))
+                {
+                    switch ($_GET['action'])
+                    {
+                        case 'create':
+                            $controller->create();
+                            break;
+                        case 'store':
+                            $controller->store();
+                            break;
+                    }
+                }
+                else
+                {
+                    $controller->index();
+                }
                 break;
             default:
                 http_response_code(404);

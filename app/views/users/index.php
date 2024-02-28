@@ -4,8 +4,10 @@ $title = 'Список пользователей';
 
 ob_start();
 ?>
-<h1>Список пользователей</h1>
-<a href="#" class="btn btn-success">Создать пользователя</a>
+
+<h1><?= $title; ?></h1>
+
+<a href="index.php?page=users&action=create" class="btn btn-success">Создать пользователя</a>
 <table class="table">
     <thead>
         <tr>

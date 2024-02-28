@@ -1,7 +1,7 @@
 <?php ?>
 
 <!doctype html>
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,13 +15,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="navbar-item">
-                        <a href="#" class="nav-link">Пользователи</a>
+                        <a href="index.php?page=users" class="nav-link">Пользователи</a>
                     </li>
                 </ul>
             </div>
         </nav>
         <div class="container mt-4">
-            <?php $content ?>
+            <?php echo $content ?>
         </div>
     </div>
 
