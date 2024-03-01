@@ -1,7 +1,7 @@
 <?php
 namespace App;
 
-use App\Controllers\Users\UsersController;
+use App\Controllers\Users\UsersController, App\Controllers\HomeController;
 
 
 class Router
@@ -12,6 +12,11 @@ class Router
         
         switch ($page)
         {
+            case '':
+            case 'home':
+                $controller = new HomeController;
+                $controller->index();
+                break;
             case 'users':
                 $controller = new UsersController;
                 if (isset($_GET['action']))
@@ -23,6 +28,9 @@ class Router
                             break;
                         case 'store':
                             $controller->store();
+                            break;
+                        case 'delete':
+                            $controller->delete();
                             break;
                     }
                 }

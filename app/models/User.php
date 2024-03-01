@@ -15,7 +15,7 @@ class User
     {
         $stmt = $this->db->query('SELECT * FROM users');
         $users = [];
-        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC))
+        while ($row = $stmt->fetch(\PDO::FETCH_BOTH))
         {
             $users[] = $row;
         }
@@ -31,5 +31,11 @@ class User
 
         $stmt = $this->db->prepare("INSERT INTO users(login, password, is_admin, created_at) VALUES (:login, :password, :is_admin, :created_at)");
         return $stmt->execute(['login'=>"$login", 'password'=>"$password", 'is_admin'=>"$is_admin", 'created_at'=>"$created_at"]) ? true : false;
+    }
+
+    public function delete($id):bool
+    {
+        $stmt = $this->db->prepare("DELETE FROM users WHERE id = :id");
+        return $stmt->execute(["id"=>"$id"]) ? true : false;
     }
 }

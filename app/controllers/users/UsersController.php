@@ -6,7 +6,7 @@ class UsersController
 {
     public function index():void
     {
-        $userModel = new User();
+        $userModel = new User;
         $users = $userModel->readAll();
 
         include 'app/views/users/index.php';
@@ -33,6 +33,13 @@ class UsersController
             $userModel = new User;
             $userModel->create($_POST);
         }
+        header("Location: index.php?page=users");
+    }
+
+    public function delete():void
+    {
+        $userModel = new User;
+        $userModel->delete($_GET['id']);
         header("Location: index.php?page=users");
     }
 }

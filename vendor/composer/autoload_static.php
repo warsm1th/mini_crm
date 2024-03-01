@@ -11,6 +11,7 @@ class ComposerStaticInit0c9c13abf34ec8b0116c3d843a075ffd
         array (
             'App\\Models\\' => 11,
             'App\\Controllers\\Users\\' => 22,
+            'App\\Controllers\\' => 16,
             'App\\Config\\' => 11,
             'App\\' => 4,
         ),
@@ -24,6 +25,10 @@ class ComposerStaticInit0c9c13abf34ec8b0116c3d843a075ffd
         'App\\Controllers\\Users\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app/controllers/users',
+        ),
+        'App\\Controllers\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app/controllers',
         ),
         'App\\Config\\' => 
         array (

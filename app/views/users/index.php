@@ -26,8 +26,8 @@ ob_start();
             <td><?php echo $user['is_admin'] ? 'Да':'Нет'; ?></td>
             <td><?php echo $user['created_at']; ?></td>
             <td>
-                <a href="index.php?page=users&action=edit&id=<?php echo $user['id']; ?>" class="btn btn-primary">Редактировать</a>
-                <a href="index.php?page=users&action=delete&id=<?php echo $user['id']; ?>" class="btn btn-danger">Удалить</a>
+                <a href="index.php?page=users&action=edit&id=<?= $user['id']; ?>" class="btn btn-primary">Редактировать</a>
+                <a href="index.php?page=users&action=delete&id=<?= $user['id']; ?>" class="btn btn-danger">Удалить</a>
             </td>
         </tr>
     <?php endforeach; ?>
