@@ -32,6 +32,12 @@ class Router
                         case 'delete':
                             $controller->delete();
                             break;
+                        case 'edit':
+                            $controller->edit();
+                            break;
+                        case 'update':
+                            $controller->update();
+                            break;
                     }
                 }
                 else

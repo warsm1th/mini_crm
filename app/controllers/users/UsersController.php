@@ -1,6 +1,6 @@
 <?php
 namespace App\Controllers\Users;
-use App\Models\User;
+use App\Models\User, App\Config\Validate;
 
 class UsersController
 {
@@ -19,17 +19,9 @@ class UsersController
 
     public function store():void
     {
-        if (isset($_POST['login']) && isset($_POST['password']) && isset($_POST['confirm_password']))
+        $validate = new Validate($_POST);
+        if ($validate->getResult())
         {
-            $password = $_POST['password'];
-            $confirm_password = $_POST['confirm_password'];
-
-            if ($password !== $confirm_password)
-            {
-                echo "Пароли не совпадают!";
-                return;
-            }
-
             $userModel = new User;
             $userModel->create($_POST);
         }
@@ -40,6 +32,21 @@ class UsersController
     {
         $userModel = new User;
         $userModel->delete($_GET['id']);
+        header("Location: index.php?page=users");
+    }
+
+    public function edit():void
+    {
+        $userModel = new User;
+        $user = $userModel->read($_GET['id']);
+
+        include 'app/views/users/edit.php';
+    }
+
+    public function update():void
+    {
+        $userModel = new User;
+        $userModel->update($_GET['id'], $_POST);
         header("Location: index.php?page=users");
     }
 }

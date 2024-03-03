@@ -12,6 +12,7 @@ ob_start();
 ?>
 
 <h1><?= $title; ?></h1>
+<p>Добро пожаловать на главную страницу!</p>
 
 <?php
 $content = ob_get_clean();
