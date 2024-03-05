@@ -5,15 +5,23 @@ class Database
 {
     private static $instance = null;
     private object $conn;
-    private string $user = "bebeg";
-    private string $pass = "Memefrog_6277";
-    private string $attr = "mysql:host=localhost;dbname=mini_crm_db";
 
     private function __construct()
     {
+        $config = require_once __DIR__ . '/../../config.php';
+
+        $db_type = $config['db_type'];
+        $db_user = $config['db_user'];
+        $db_pass = $config['db_pass'];
+        $db_host = $config['db_host'];
+        $db_name = $config['db_name'];
+        $db_charset = $config['db_charset'];
+        
         try
         {
-            $this->conn = new \PDO($this->attr, $this->user, $this->pass);
+            $dsn = "$db_type:host=$db_host;dbname=$db_name;charset=$db_charset";
+            $this->conn = new \PDO($dsn, $db_user, $db_pass);
+            $this->conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         }
         catch (\PDOException $exception)
         {
@@ -23,9 +31,9 @@ class Database
     //получение объекта класса
     public static function getInstance():object
     {
-        if (!self::$instance)
+        if (!isset(self::$instance))
         {
-            self::$instance = new Database();
+            self::$instance = new self();
             return self::$instance;
         }
     }
