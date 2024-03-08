@@ -6,7 +6,7 @@ use App\Controllers\Users\UsersController, App\Controllers\HomeController;
 
 class Router
 {
-    public function run()
+    public function run(): void
     {
         $page = isset($_GET['page']) ? $_GET['page'] : 'home';
         

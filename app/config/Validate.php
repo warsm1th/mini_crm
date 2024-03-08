@@ -3,7 +3,7 @@ namespace App\Config;
 
 class Validate
 {
-    private bool $result= true;
+    private bool $result = true;
     public function __construct(array $data)
     {
         if (isset($data['login']) && isset($data['password']) && isset($data['confirm_password']))
@@ -19,7 +19,7 @@ class Validate
         }
     }
 
-    public function getResult():bool
+    public function getResult(): bool
     {
         return $this->result;
     }

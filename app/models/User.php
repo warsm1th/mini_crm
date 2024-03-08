@@ -9,9 +9,32 @@ class User
     public function __construct()
     {
         $this->db = Database::getInstance()->getConnection();
+        
+        try
+        {
+            $table = $this->db->query("SELECT 1 FROM `users` LIMIT 1");
+        }
+        catch (\PDOException $exception)
+        {
+            $this->createTable();
+        }
     }
 
-    public function readAll():array|bool
+    public function createTable(): bool
+    {
+        $query = file_get_contents(__DIR__ . "../../../table.sql");
+        try
+        {
+            $this->db->exec($query);
+            return true;
+        }
+        catch (\PDOException $exception)
+        {
+            return false;
+        }
+    }
+
+    public function readAll(): array | bool
     {
         try
         {
@@ -29,7 +52,7 @@ class User
         }
     }
 
-    public function create(array $data):bool
+    public function create(array $data): bool
     {
         $login = $data['login'];
         $password = password_hash($data['password'], PASSWORD_DEFAULT);
@@ -53,7 +76,7 @@ class User
         }
     }
 
-    public function delete(int $id):bool
+    public function delete(int $id): bool
     {
         $query = "DELETE FROM users WHERE id = :id";
         try
@@ -69,7 +92,7 @@ class User
         }
     }
 
-    public function read(int $id):array|bool
+    public function read(int $id): array | bool
     {
         $query = "SELECT id, login, is_admin FROM users WHERE id = :id";
         try
@@ -86,7 +109,7 @@ class User
         }
     }
 
-    public function update(int $id, array $data):bool
+    public function update(int $id, array $data): bool
     {
         $login = $data['login'];
         $is_admin = isset($data['is_admin']) ? 1 : 0;

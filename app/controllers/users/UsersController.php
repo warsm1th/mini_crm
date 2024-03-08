@@ -4,7 +4,7 @@ use App\Models\User, App\Config\Validate;
 
 class UsersController
 {
-    public function index():void
+    public function index(): void
     {
         $userModel = new User;
         $users = $userModel->readAll();
@@ -12,12 +12,12 @@ class UsersController
         include 'app/views/users/index.php';
     }
 
-    public function create():void
+    public function create(): void
     {
         include 'app/views/users/create.php';
     }
 
-    public function store():void
+    public function store(): void
     {
         $validate = new Validate($_POST);
         if ($validate->getResult())
@@ -28,14 +28,14 @@ class UsersController
         header("Location: index.php?page=users");
     }
 
-    public function delete():void
+    public function delete(): void
     {
         $userModel = new User;
         $userModel->delete($_GET['id']);
         header("Location: index.php?page=users");
     }
 
-    public function edit():void
+    public function edit(): void
     {
         $userModel = new User;
         $user = $userModel->read($_GET['id']);
@@ -43,7 +43,7 @@ class UsersController
         include 'app/views/users/edit.php';
     }
 
-    public function update():void
+    public function update(): void
     {
         $userModel = new User;
         $userModel->update($_GET['id'], $_POST);
