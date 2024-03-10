@@ -22,9 +22,9 @@ class Database
             $this->conn = new \PDO($dsn, $db_user, $db_pass);
             $this->conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         }
-        catch (\PDOException $exception)
+        catch (\PDOException $e)
         {
-            die("Ошибка соединения: " . $exception->getMessage());
+            die("Ошибка соединения: " . $e->getMessage());
         }
     }
     //получение объекта класса

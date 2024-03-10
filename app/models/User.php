@@ -14,7 +14,7 @@ class User
         {
             $table = $this->db->query("SELECT 1 FROM `users` LIMIT 1");
         }
-        catch (\PDOException $exception)
+        catch (\PDOException $e)
         {
             $this->createTable();
         }
@@ -28,7 +28,7 @@ class User
             $this->db->exec($query);
             return true;
         }
-        catch (\PDOException $exception)
+        catch (\PDOException $e)
         {
             return false;
         }
@@ -46,7 +46,7 @@ class User
             }
             return $users;
         }
-        catch (\PDOException $exception)
+        catch (\PDOException $e)
         {
             return false;
         }
@@ -70,7 +70,7 @@ class User
             $stmt->execute();
             return true;
         }
-        catch (\PDOException $exception)
+        catch (\PDOException $e)
         {
             return false;
         }
@@ -86,7 +86,7 @@ class User
             $stmt->execute();
             return true;
         }
-        catch (\PDOException $exception)
+        catch (\PDOException $e)
         {
             return false;
         }
@@ -103,7 +103,7 @@ class User
             $user = $stmt->fetch(\PDO::FETCH_ASSOC);
             return $user;
         }
-        catch (\PDOException $exception)
+        catch (\PDOException $e)
         {
             return false;
         }
@@ -123,7 +123,7 @@ class User
             $stmt->execute();
             return true;
         }
-        catch (\PDOException $exception)
+        catch (\PDOException $e)
         {
             return false;
         }
