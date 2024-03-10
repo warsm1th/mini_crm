@@ -28,9 +28,9 @@ class Database
         }
     }
     //получение объекта класса
-    public static function getInstance(): object
+    public static function getInstance(): Database
     {
-        if (!isset(self::$instance))
+        if (empty(self::$instance))
         {
             self::$instance = new self();
             return self::$instance;

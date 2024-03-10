@@ -22,7 +22,7 @@ class UsersController
         $validate = new Validate($_POST);
         if ($validate->getResult())
         {
-            $userModel = new User;
+            $userModel = new User();
             $userModel->create($_POST);
         }
         header("Location: index.php?page=users");
@@ -37,7 +37,7 @@ class UsersController
 
     public function edit(): void
     {
-        $userModel = new User;
+        $userModel = new User();
         $user = $userModel->read($_GET['id']);
 
         include 'app/views/users/edit.php';
@@ -45,7 +45,7 @@ class UsersController
 
     public function update(): void
     {
-        $userModel = new User;
+        $userModel = new User();
         $userModel->update($_GET['id'], $_POST);
         header("Location: index.php?page=users");
     }
