@@ -6,7 +6,7 @@ class Validate
     private bool $result = true;
     public function __construct(array $data)
     {
-        if (isset($data['login']) && isset($data['password']) && isset($data['confirm_password']))
+        if (isset($data['username']) && isset($data['email']) && isset($data['password']) && isset($data['confirm_password']))
         {
             $password = $_POST['password'];
             $confirm_password = $_POST['confirm_password'];

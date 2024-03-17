@@ -28,25 +28,25 @@ class UsersController
         header("Location: index.php?page=users");
     }
 
-    public function delete(): void
+    public function delete(int $id): void
     {
         $userModel = new User;
-        $userModel->delete($_GET['id']);
+        $userModel->delete($id);
         header("Location: index.php?page=users");
     }
 
-    public function edit(): void
+    public function edit(int $id): void
     {
         $userModel = new User();
-        $user = $userModel->read($_GET['id']);
+        $user = $userModel->read($id);
 
         include 'app/views/users/edit.php';
     }
 
-    public function update(): void
+    public function update(int $id, array $data): void
     {
         $userModel = new User();
-        $userModel->update($_GET['id'], $_POST);
+        $userModel->update($id, $data);
         header("Location: index.php?page=users");
     }
 }

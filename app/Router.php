@@ -30,13 +30,13 @@ class Router
                             $controller->store();
                             break;
                         case 'delete':
-                            $controller->delete();
+                            $controller->delete($_GET['id']);
                             break;
                         case 'edit':
-                            $controller->edit();
+                            $controller->edit($_GET['id']);
                             break;
                         case 'update':
-                            $controller->update();
+                            $controller->update($_GET['id'], $_POST);
                             break;
                     }
                 }

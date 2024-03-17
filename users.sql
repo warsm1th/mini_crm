@@ -1,0 +1,13 @@
+CREATE TABLE IF NOT EXISTS `users` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `username` VARCHAR(255) NOT NULL,
+    `email` VARCHAR(255) NOT NULL,
+    `email_verification` BOOLEAN NOT NULL DEFAULT(0),
+    `password` VARCHAR(255) NOT NULL,
+    `is_admin` BOOLEAN NOT NULL DEFAULT(0),
+    `role` INT(11) NOT NULL DEFAULT 1,
+    `is_active` BOOLEAN NOT NULL DEFAULT(1),
+    `last_login` TIMESTAMP NULL,
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (`role`) REFERENCES `roles`(`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

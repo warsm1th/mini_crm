@@ -22,10 +22,12 @@ class User
 
     public function createTable(): bool
     {
-        $query = file_get_contents(__DIR__ . "../../../table.sql");
+        $createTableRoles = file_get_contents(__DIR__ . "../../../roles.sql");
+        $createTableUsers = file_get_contents(__DIR__ . "../../../users.sql");
         try
         {
-            $this->db->exec($query);
+            $this->db->exec($createTableRoles);
+            $this->db->exec($createTableUsers);
             return true;
         }
         catch (\PDOException $e)
@@ -54,18 +56,18 @@ class User
 
     public function create(array $data): bool
     {
-        $login = $data['login'];
+        $username = $data['username'];
+        $email = $data['email'];
         $password = password_hash($data['password'], PASSWORD_DEFAULT);
-        $is_admin = isset($data['is_admin']) ? 1 : 0;
         $created_at = date('Y-m-d H:i:s');
 
-        $query = "INSERT INTO users(login, password, is_admin, created_at) VALUES (:login, :password, :is_admin, :created_at)";
+        $query = "INSERT INTO users(username, email, password, created_at) VALUES (:username, :email, :password, :created_at)";
         try
         {
             $stmt = $this->db->prepare($query);
-            $stmt->bindParam('login', $login, \PDO::PARAM_STR);
+            $stmt->bindParam('username', $username, \PDO::PARAM_STR);
+            $stmt->bindParam('email', $email, \PDO::PARAM_STR);
             $stmt->bindParam('password', $password, \PDO::PARAM_STR);
-            $stmt->bindParam('is_admin', $is_admin, \PDO::PARAM_INT);
             $stmt->bindParam('created_at', $created_at, \PDO::PARAM_STR);
             $stmt->execute();
             return true;
@@ -94,7 +96,7 @@ class User
 
     public function read(int $id): array | bool
     {
-        $query = "SELECT id, login, is_admin FROM users WHERE id = :id";
+        $query = "SELECT * FROM users WHERE id = :id";
         try
         {
             $stmt = $this->db->prepare($query);
@@ -111,14 +113,18 @@ class User
 
     public function update(int $id, array $data): bool
     {
-        $login = $data['login'];
-        $is_admin = isset($data['is_admin']) ? 1 : 0;
-        $query = "UPDATE users SET login = :login, is_admin = :is_admin WHERE id = :id";
+        $username = $data['username'];
+        $email = $data['email'];
+        $email_verification = isset($data['email_verification']) ? 1 : 0;
+        $role = $data['role'];
+        $query = "UPDATE users SET username = :username, email = :email, email_verification = :email_verification, role = :role WHERE id = :id";
         try
         {
             $stmt = $this->db->prepare($query);
-            $stmt->bindParam('login', $login, \PDO::PARAM_STR);
-            $stmt->bindParam('is_admin', $is_admin, \PDO::PARAM_INT);
+            $stmt->bindParam('username', $username, \PDO::PARAM_STR);
+            $stmt->bindParam('email', $email, \PDO::PARAM_STR);
+            $stmt->bindParam('email_verification', $email_verification, \PDO::PARAM_INT);
+            $stmt->bindParam('role', $role, \PDO::PARAM_INT);
             $stmt->bindParam('id', $id, \PDO::PARAM_INT);
             $stmt->execute();
             return true;
