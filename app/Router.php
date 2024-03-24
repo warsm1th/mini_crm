@@ -1,7 +1,7 @@
 <?php
 namespace App;
 
-use App\Controllers\Users\UsersController, App\Controllers\HomeController, App\Controllers\AuthController;
+use App\Controllers\HomeController, App\Controllers\Users\AuthController, App\Controllers\Users\UsersController;
 
 
 class Router
@@ -27,7 +27,7 @@ class Router
                             $controller->create();
                             break;
                         case 'store':
-                            $controller->store();
+                            $controller->store($_POST);
                             break;
                         case 'delete':
                             $controller->delete($_GET['id']);
@@ -43,6 +43,41 @@ class Router
                 else
                 {
                     $controller->index();
+                }
+                break;
+            case 'register':
+                $controller = new AuthController();
+                $controller->register();
+                break;
+            case 'login':
+                $controller = new AuthController();
+                $controller->login();
+                break;
+            case 'authenticate':
+                $controller = new AuthController();
+                $controller->authenticate($_POST);
+                break;
+            case 'logout':
+                $controller = new AuthController();
+                $controller->logout();
+                break;
+            case 'auth':
+                $controller = new AuthController();
+                if (isset($_GET['action']))
+                {
+                    switch ($_GET['action'])
+                    {
+                        case 'store':
+                            $controller->store($_POST);
+                            break;
+                        case 'authenticate':
+                            $controller->authenticate($_POST);
+                            break;
+                    }
+                }
+                else
+                {
+                    $controller->login();
                 }
                 break;
             default:

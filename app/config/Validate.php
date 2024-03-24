@@ -8,8 +8,16 @@ class Validate
     {
         if (isset($data['username']) && isset($data['email']) && isset($data['password']) && isset($data['confirm_password']))
         {
-            $password = $_POST['password'];
-            $confirm_password = $_POST['confirm_password'];
+            $username = trim($data['username']);
+            $email = trim($data['password']);
+            $password = trim($data['password']);
+            $confirm_password = trim($data['confirm_password']);
+
+            if (empty($username) || empty($email) || empty($password) || empty($confirm_password))
+            {
+                $this->result = false;
+                die('Необходимо заполнить все поля!');
+            }
 
             if ($password !== $confirm_password)
             {

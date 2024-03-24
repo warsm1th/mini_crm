@@ -17,9 +17,9 @@ class UsersController
         include 'app/views/users/create.php';
     }
 
-    public function store(): void
+    public function store(array $data): void
     {
-        $validate = new Validate($_POST);
+        $validate = new Validate($data);
         if ($validate->getResult())
         {
             $userModel = new User();
