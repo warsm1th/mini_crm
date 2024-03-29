@@ -9,8 +9,10 @@ class ComposerStaticInit0c9c13abf34ec8b0116c3d843a075ffd
     public static $prefixLengthsPsr4 = array (
         'A' => 
         array (
+            'App\\Models\\Roles\\' => 17,
             'App\\Models\\' => 11,
             'App\\Controllers\\Users\\' => 22,
+            'App\\Controllers\\Roles\\' => 22,
             'App\\Controllers\\' => 16,
             'App\\Config\\' => 11,
             'App\\' => 4,
@@ -18,6 +20,10 @@ class ComposerStaticInit0c9c13abf34ec8b0116c3d843a075ffd
     );
 
     public static $prefixDirsPsr4 = array (
+        'App\\Models\\Roles\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app/models/roles',
+        ),
         'App\\Models\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app/models',
@@ -25,6 +31,10 @@ class ComposerStaticInit0c9c13abf34ec8b0116c3d843a075ffd
         'App\\Controllers\\Users\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app/controllers/users',
+        ),
+        'App\\Controllers\\Roles\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app/controllers/roles',
         ),
         'App\\Controllers\\' => 
         array (

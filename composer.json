@@ -6,8 +6,10 @@
             "App\\": "app/",
             "App\\Config\\": "app/config/",
             "App\\Models\\": "app/models/",
+            "App\\Models\\Roles\\": "app/models/roles/",
             "App\\Controllers\\": "app/controllers/",
-            "App\\Controllers\\Users\\": "app/controllers/users/"
+            "App\\Controllers\\Users\\": "app/controllers/users/",
+            "App\\Controllers\\Roles\\": "app/controllers/roles/"
         }
     },
     "minimum-stability": "dev",

@@ -1,7 +1,7 @@
 <?php
 namespace App;
 
-use App\Controllers\HomeController, App\Controllers\Users\AuthController, App\Controllers\Users\UsersController;
+use App\Controllers\HomeController, App\Controllers\Users\AuthController, App\Controllers\Users\UserController;
 
 
 class Router
@@ -18,7 +18,7 @@ class Router
                 $controller->index();
                 break;
             case 'users':
-                $controller = new UsersController();
+                $controller = new UserController();
                 if (isset($_GET['action']))
                 {
                     switch ($_GET['action'])

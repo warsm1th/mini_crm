@@ -2,7 +2,7 @@
 namespace App\Controllers\Users;
 use App\Models\User, App\Config\Validate;
 
-class UsersController
+class UserController
 {
     public function index(): void
     {
