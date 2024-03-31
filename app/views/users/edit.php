@@ -24,9 +24,9 @@ ob_start();
             <div class="mb-3">
                 <label for="role" class="form-label">Роль</label>
                 <select class="form-control" name="role" id="role">
-                    <option value="1"<?= $user['role'] == 1 ? 'selected' : ''; ?>>Пользователь</option>
-                    <option value="2"<?= $user['role'] == 2 ? 'selected' : ''; ?>>Модератор</option>
-                    <option value="3"<?= $user['role'] == 3 ? 'selected' : ''; ?>>Администратор</option>
+                    <?php foreach($roles as $role): ?>
+                        <option value="<?= $role['id']; ?>" <?= $user['role'] == $role['id'] ? 'selected' : ''; ?>><?= $role['role_name']; ?></option>
+                    <?php endforeach; ?>
                 </select>
             </div>
             <div class="mb-3 form-check">

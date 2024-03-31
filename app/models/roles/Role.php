@@ -12,7 +12,7 @@ class Role
         
         try
         {
-            $table = $this->db->query("SELECT 1 FROM `users` LIMIT 1");
+            $table = $this->db->query("SELECT 1 FROM `roles` LIMIT 1");
         }
         catch (\PDOException $e)
         {
@@ -20,7 +20,7 @@ class Role
         }
     }
 
-    public function createTable(): bool
+    private function createTable(): bool
     {
         $createTableRoles = file_get_contents(__DIR__ . "../../../roles.sql");
         try
@@ -110,6 +110,7 @@ class Role
         {
             $stmt = $this->db->prepare($query);
             $stmt->bindParam('id', $id, \PDO::PARAM_INT);
+            $stmt->execute();
             return true;
         }
         catch (\PDOException $e)

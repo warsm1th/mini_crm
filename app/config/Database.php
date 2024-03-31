@@ -33,8 +33,8 @@ class Database
         if (empty(self::$instance))
         {
             self::$instance = new self();
-            return self::$instance;
         }
+        return self::$instance;
     }
     //получение соединения с БД
     public function getConnection(): object

@@ -18,6 +18,12 @@
                         <a href="index.php?page=users" class="nav-link">Пользователи</a>
                     </li>
                     <li class="navbar-item">
+                        <a href="index.php?page=roles" class="nav-link">Роли</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="index.php?page=roles&action=create" class="nav-link">Создать роль</a>
+                    </li>
+                    <li class="navbar-item">
                         <a href="index.php?page=register" class="nav-link">Зарегистрироваться</a>
                     </li>
                     <li class="navbar-item">

@@ -70,10 +70,10 @@ class RoleController
         header("Location: index.php?page=roles");
     }
 
-    public function delete(array $data): void
+    public function delete(int $id): void
     {
         $roleModel = new Role();
-        $roleModel->deleteRole($data['id']);
+        $roleModel->deleteRole($id);
 
         header("Location: index.php?page=roles");
 

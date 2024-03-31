@@ -1,7 +1,7 @@
 <?php
 namespace App;
 
-use App\Controllers\HomeController, App\Controllers\Users\AuthController, App\Controllers\Users\UserController;
+use App\Controllers\HomeController, App\Controllers\Users\AuthController, App\Controllers\Users\UserController, App\Controllers\Roles\RoleController;
 
 
 class Router
@@ -78,6 +78,34 @@ class Router
                 else
                 {
                     $controller->login();
+                }
+                break;
+            case 'roles':
+                $controller = new RoleController();
+                if (isset($_GET['action']))
+                {
+                    switch ($_GET['action'])
+                    {
+                        case 'create':
+                            $controller->create();
+                            break;
+                        case 'store':
+                            $controller->store($_POST);
+                            break;
+                        case 'edit':
+                            $controller->edit($_GET['id']);
+                            break;
+                        case 'update':
+                            $controller->update($_POST);
+                            break;
+                        case 'delete':
+                            $controller->delete($_GET['id']);
+                            break;
+                    }
+                }
+                else
+                {
+                    $controller->index();
                 }
                 break;
             default:

@@ -20,7 +20,7 @@ class User
         }
     }
 
-    public function createTable(): bool
+    private function createTable(): bool
     {
         $createTableRoles = file_get_contents(__DIR__ . "../../../roles.sql");
         $createTableUsers = file_get_contents(__DIR__ . "../../../users.sql");

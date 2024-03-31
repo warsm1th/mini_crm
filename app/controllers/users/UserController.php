@@ -1,6 +1,6 @@
 <?php
 namespace App\Controllers\Users;
-use App\Models\User, App\Config\Validate;
+use App\Models\User, App\Config\Validate, App\Models\Roles\Role;
 
 class UserController
 {
@@ -39,6 +39,9 @@ class UserController
     {
         $userModel = new User();
         $user = $userModel->read($id);
+
+        $roleModel = new Role();
+        $roles = $roleModel->getAllRoles();
 
         include 'app/views/users/edit.php';
     }
