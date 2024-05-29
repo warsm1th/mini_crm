@@ -1,1 +1,1 @@
-Небольшая CRM-система на PHP+MySQL+Bootstrap. Используется PDO, composer, автозагрузка PSR-4.
+Небольшая CRM-система на PHP+MySQL+Bootstrap. Используется PDO, composer, автозагрузка PSR-4. Параметры для подключения к БД указаны в файле config.php в корне проекта.
